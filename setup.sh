@@ -11,5 +11,6 @@ if [ ! -d $HOME/.cache ]; then
 else
 	rm -rf $HOME/.cache/dein
 fi
-
-ln -s $HOME/dotfiles/.cache/dein $HOME/.cache/dein
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
+# For example, we just use `~/.cache/dein` as installation directory
+sh ./dein_installer.sh ~/.cache/dein
