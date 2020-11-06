@@ -2,6 +2,8 @@ pacman -Syu
 pacman -S --needed git tmux vim neovim fish python3 python-pip clang
 git submodule update --init --recursive
 
+pip3 install --user --upgrade pynvim neovim pyls
+
 DOT_FILES=(.bash_history .bash_profile .config .gitconfig .vim .bash_logout .bashrc .rustup .tmux.conf .vimrc)
 
 for file in ${DOT_FILES[@]};

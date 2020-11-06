@@ -7,20 +7,20 @@ set shiftwidth=4
 set noexpandtab
 
 
-if has('nvim')
-    set rtp^=/usr/share/vim/vimfiles/
-    " Plugin 'neovim/nvim-lspconfig'
-    " Plugin 'neoclide/coc.nvim'
-else
-endif
 
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'cohama/lexima.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdtree'
-Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplete.vim'
+
+if has('nvim')
+    set rtp^=/usr/share/vim/vimfiles/
+	"Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+endif
 
 
 call vundle#end()
@@ -96,6 +96,22 @@ let g:airline_right_alt_sep = '⮃'
 command Tree NERDTreeToggle
 highlight LineNr ctermbg=16 
 highlight LineNr ctermfg=8
+
+
+if &compatible
+	set nocompatible
+endif
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.cache/dein')
+	call dein#begin('~/.cache/dein')
+	call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
+	call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
+	call dein#end()
+	call dein#save_state()
+endif
+let g:deoplete#enable_at_startup = 1
+filetype plugin indent on
+syntax enable
 
 let g:LanguageClient_serverCommands = {}
 

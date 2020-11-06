@@ -1,43 +1,54 @@
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-depends = 'context_filetype.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/neosnippet.rc.vim
-'''
+repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = "InsertEnter"
-hook_add = '''
-source ~/.config/nvim/plugins/deoplete.rc.vim
-'''
+repo = 'Shougo/unite-outline'
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
 hook_add = '''
-source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 '''
 
 [[plugins]]
-repo = 'rust-lang/rust.vim'
-on_ft = 'rust'
-hook_add = '''
-source ~/.config/nvim/plugins/rust.rc.vim
-'''
+repo = 'Shougo/deoplete.nvim'
+hook_source = '''
+let g:deoplete#enable_at_startup = 1
 
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+
+" Expand the completed snippet trigger by <CR>.
+imap <expr><CR>
+\ (pumvisible() && neosnippet#expandable()) ?
+\ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
+
+function! s:my_cr_function() abort
+return deoplete#close_popup() . "\<CR>"
+endfunction
+
+'''
+on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+	hook_source = '''
+	imap <C-k> <Plug>(neosnippet_expand_or_jump)
+	smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+	if has('conceal')
+	set conceallevel=0 concealcursor=niv
+	endif
+	'''
+	on_event = 'InsertEnter'
+	depends = ['neosnippet-snippets']
+
+	[[plugins]]
+	repo= 'Shougo/neosnippet-snippets'
