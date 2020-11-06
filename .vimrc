@@ -1,8 +1,8 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 set number
-set tabstop = 4
-set softtabstop = 4
-set shiftwidth = 4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set noexpandtab
 call vundle#begin()
 
@@ -25,7 +25,7 @@ Plugin 'Shougo/neocomplete.vim'
 
 
 call vundle#end()
-filetype plugin indent 
+" filetype plugin indent 
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -106,13 +106,4 @@ let g:lsp_signs_warning = {'text': ''}
 let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 
-if (excutable('pyls'))
-    augroup LspPython
-	autocmd!
-	autocmd User lsp_setup call lsp#register_server({
-	    \ 'name': 'pyls',
-	    \ 'cmd': { server_info -> ['pyls']},
-	    \ 'whitelist': ['python'],
-	    \})
-    augroup END
-endif
+

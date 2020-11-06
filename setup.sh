@@ -14,3 +14,6 @@ else
 	rm -rf $HOME/.cache/dein
 fi
 ln -s $HOME/dotfiles/.cache/dein $HOME/.cache/dein
+
+vim +:PluginInstall +:q +:q
+nvim +:PluginInstall +:q +:q
