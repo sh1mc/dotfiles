@@ -1,3 +1,7 @@
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

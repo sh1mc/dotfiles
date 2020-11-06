@@ -96,3 +96,16 @@ let g:airline_right_alt_sep = '⮃'
 command Tree NERDTreeToggle
 highlight LineNr ctermbg=16 
 highlight LineNr ctermfg=8
+
+let g:LanguageClient_serverCommands = {}
+
+if executable('clangd')
+	let g:LanguageClient_serverCommands['c'] = ['clangd']
+	let g:LanguageClient_serverCommands['cpp'] = ['clangd']
+endif
+
+if executable('pyls')
+	let g:LanguageClient_serverCommands['python'] = ['pyls']
+endif
+
+"let g:LanguageClient_useVirtualText = 0
