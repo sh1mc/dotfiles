@@ -1,3 +1,6 @@
 [submodule ".cache/dein/repos/github.com/Shougo/dein.vim"]
 	path = .cache/dein/repos/github.com/Shougo/dein.vim
 	url = https://github.com/Shougo/dein.vim.git
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
