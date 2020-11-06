@@ -26,6 +26,10 @@ imap <expr><CR>
 \ (pumvisible() && neosnippet#expandable()) ?
 \ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
 
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PmenuSbar ctermbg=0
+
 function! s:my_cr_function() abort
 return deoplete#close_popup() . "\<CR>"
 endfunction
