@@ -1,11 +1,16 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 set number
 call vundle#begin()
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+
 
 if has('nvim')
     set rtp^=/usr/share/vim/vimfiles/
-    Plugin 'neovim/nvim-lspconfig'
-    Plugin 'neoclide/coc.nvim'
+    " Plugin 'neovim/nvim-lspconfig'
+    " Plugin 'neoclide/coc.nvim'
 else
 endif
 
