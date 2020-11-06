@@ -5,3 +5,11 @@ do
 	rm -rf $HOME/$file
 	ln -s $HOME/dotfiles/$file $HOME/$file
 done
+
+if [ ! -d $HOME/.cache ]; then
+	mkdir $HOME/.cache
+else
+	rm -rf $HOME/.cache/dein
+fi
+
+ln -s $HOME/dotfiles/.cache/dein $HOME/.cache/dein
