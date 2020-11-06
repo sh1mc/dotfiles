@@ -18,4 +18,4 @@ fi
 ln -s $HOME/dotfiles/.cache/dein $HOME/.cache/dein
 
 vim +:PluginInstall +:q +:q
-nvim +:PluginInstall +:q +:q
+nvim +:PluginInstall +":call dein#install()" +:q +:q
