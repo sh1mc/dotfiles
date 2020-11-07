@@ -1,3 +1,4 @@
 dein_installer.sh
 .cache/dein/repos
 .cache/dein/.cache
+*.log
