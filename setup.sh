@@ -16,12 +16,13 @@ do
 	ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
-if [ ! -d $HOME/.cache ]; then
-	mkdir $HOME/.cache
+if [ ! -d $HOME/.cache/dein ]; then
+	mkdir -p $HOME/.cache/dein/repos
 else
 	rm -rf $HOME/.cache/dein
+	mkdir -p $HOME/.cache/dein/repos
 fi
-ln -s $HOME/dotfiles/.cache/dein $HOME/.cache/dein
+ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein/repos
 
 vim +:PluginInstall +:q +:q
 nvim +:PluginInstall +:UpdateRemotePlugins +:q +:q
