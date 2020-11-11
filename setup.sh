@@ -16,10 +16,10 @@ do
 done
 
 if [ ! -d $HOME/.cache/dein ]; then
-	mkdir -p $HOME/.cache/dein/repos
+	mkdir -p $HOME/.cache/dein
 else
 	rm -rf $HOME/.cache/dein
-	mkdir -p $HOME/.cache/dein/repos
+	mkdir -p $HOME/.cache/dein
 fi
 ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein
 
