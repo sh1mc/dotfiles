@@ -21,7 +21,7 @@ else
 	rm -rf $HOME/.cache/dein
 	mkdir -p $HOME/.cache/dein/repos
 fi
-ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein/repos
+ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein
 
 git submodule update --init --recursive
 
