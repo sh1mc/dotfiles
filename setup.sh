@@ -4,7 +4,11 @@ git submodule update --init --recursive
 
 pip3 install --user --upgrade pynvim neovim pyls
 
-DOT_FILES=(.bash_history .bash_profile .config .gitconfig .vim .bash_logout .bashrc .rustup .tmux.conf .vimrc)
+DOT_FILES=(.bash_history .bash_profile .gitconfig .vim .bash_logout .bashrc .rustup .tmux.conf .vimrc .config/nvim .config/fish .config/coc)
+
+if [ ! -d $HOME/.config ]; then
+	mkdir $HOME/.config
+fi
 
 for file in ${DOT_FILES[@]};
 do
