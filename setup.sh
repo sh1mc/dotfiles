@@ -1,6 +1,5 @@
 pacman -Syu
 pacman -S --needed git tmux vim neovim fish python3 python-pip clang
-git submodule update --init --recursive
 
 pip3 install --user --upgrade pynvim neovim pyls
 
@@ -23,6 +22,8 @@ else
 	mkdir -p $HOME/.cache/dein/repos
 fi
 ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein/repos
+
+git submodule update --init --recursive
 
 vim +:PluginInstall +:q +:q
 nvim +:PluginInstall +:UpdateRemotePlugins +:q +:q
