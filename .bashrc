@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-export DISPLAY='localhost:10.0'
+# export DISPLAY='localhost:10.0'
 
 export XIM_PROGRAM=fcitx
 export XIM=fcitx
