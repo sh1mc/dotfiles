@@ -10,11 +10,11 @@ PS1='[\u@\h \W]\$ '
 
 # export DISPLAY='localhost:10.0'
 
-export XIM_PROGRAM=fcitx
-export XIM=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
+export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-linux
+
+if [ -e $HOME/.bashrc_local ]; then
+	bash $HOME/.bashrc_local;
+fi
 
 fish
 exit
