@@ -5,4 +5,4 @@ dein_installer.sh
 .cache/dein/state_nvim.vim
 *.log
 .vim/bundle
-
+.config/nvim/init.vim

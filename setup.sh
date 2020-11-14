@@ -23,6 +23,9 @@ else
 fi
 ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein
 
+rm $HOME/dotfiles/.config/nvim/init.vim
+ln -s $HOME/dotfiles/.vimrc $HOME/dotfiles/.config/nvim/init.vim
+
 git submodule update --init --recursive
 
 vim +:PluginInstall +:q +:q
