@@ -11,29 +11,38 @@ repo = 'Shougo/unite-outline'
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
-hook_add = '''
-'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_source = '''
-let g:deoplete#enable_at_startup = 1
+	let g:deoplete#enable_at_startup = 1
+	
+	inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+	
+	" Expand the completed snippet trigger by <CR>.
+	imap <expr><CR>
+	\ (pumvisible() && neosnippet#expandable()) ?
+	\ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
 
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+	function! s:my_cr_function() abort
+		return deoplete#close_popup() . "\<CR>"
+	endfunction
 
-" Expand the completed snippet trigger by <CR>.
-imap <expr><CR>
-\ (pumvisible() && neosnippet#expandable()) ?
-\ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
+	" color settings
+	highlight Pmenu ctermbg=4
+	highlight PmenuSel ctermbg=1
+	highlight PmenuSbar ctermbg=0
 
-highlight Pmenu ctermbg=4
-highlight PmenuSel ctermbg=1
-highlight PmenuSbar ctermbg=0
-
-function! s:my_cr_function() abort
-return deoplete#close_popup() . "\<CR>"
-endfunction
-
+	call deoplete#custom#option({
+	\ 'auto_complete_delay': 0,
+	\ 'enable_camel_case': 0,
+	\ 'enable_ignore_case': 0,
+	\ 'enable_refresh_always': 0,
+	\ 'enable_smart_case': 1,
+	\ 'enable_buffer_path': 1,
+	\ 'auto_complete_start_length': 1,
+	\ 'max_list': 100,
+	\ })
 '''
 on_event = 'InsertEnter'
 
@@ -43,16 +52,28 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
-	hook_source = '''
+hook_source = '''
 	imap <C-k> <Plug>(neosnippet_expand_or_jump)
 	smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+	xmap <C-k> <Plug>(neosnippet_expand_target)
 	if has('conceal')
 	set conceallevel=0 concealcursor=niv
 	endif
-	'''
-	on_event = 'InsertEnter'
-	depends = ['neosnippet-snippets']
+'''
+on_event = 'InsertEnter'
+depends = ['neosnippet-snippets']
 
-	[[plugins]]
-	repo= 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'davidhalter/jedi'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+hook_source = '''
+	let g:deoplete#sources#jedi#server_timeout = 20
+'''
+on_ft = 'python'
+
