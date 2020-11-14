@@ -26,4 +26,4 @@ ln -s $HOME/dotfiles/.cache/dein/repos $HOME/.cache/dein
 git submodule update --init --recursive
 
 vim +:PluginInstall +:q +:q
-nvim +:PluginInstall +:UpdateRemotePlugins +":call dein#install()" +:q +:q
+nvim +:PluginInstall +":call dein#install()" +:UpdateRemotePlugins +:q +:q
