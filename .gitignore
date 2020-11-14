@@ -1,6 +1,8 @@
 dein_installer.sh
 .cache/dein/repos
 .cache/dein/.cache
+.cache/dein/cache_nvim
+.cache/dein/state_nvim.vim
 *.log
 .vim/bundle
-.cache/dein/state_nvim.vim
+
