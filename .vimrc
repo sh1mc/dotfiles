@@ -102,6 +102,7 @@ if has('nvim')
 	
 	" language servers
 	let g:LanguageClient_serverCommands = {}
+	let g:deoplete#enable_at_startup = 1
 
 	if executable('clangd')
 		let g:LanguageClient_serverCommands['c'] = ['clangd']
