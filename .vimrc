@@ -99,25 +99,44 @@ if has('nvim')
 		call dein#end()
 		call dein#save_state()
 	endif
-	
+
+	" deoplete
+	inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+	" Expand the completed snippet trigger by <CR>.
+	imap <expr><CR>
+	\ (pumvisible() && neosnippet#expandable()) ?
+	\ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
+	function! s:my_cr_function() abort
+		return deoplete#close_popup() . "\<CR>"
+	endfunction
+	" color settings
+	highlight Pmenu ctermbg=4
+	highlight PmenuSel ctermbg=1
+	highlight PmenuSbar ctermbg=0
+	call deoplete#custom#option({
+	\ 'auto_complete_delay': 0,
+	\ 'enable_camel_case': 0,
+	\ 'enable_ignore_case': 0,
+	\ 'enable_refresh_always': 0,
+	\ 'enable_smart_case': 1,
+	\ 'enable_buffer_path': 1,
+	\ 'auto_complete_start_length': 1,
+	\ 'max_list': 100,
+	\ })
 	" language servers
 	let g:LanguageClient_serverCommands = {}
 	let g:deoplete#enable_at_startup = 1
-
 	if executable('clangd')
 		let g:LanguageClient_serverCommands['c'] = ['clangd']
 		let g:LanguageClient_serverCommands['cpp'] = ['clangd']
 	endif
-
 	if executable('pyls')
 		let g:LanguageClient_serverCommands['python'] = ['pyls']
 	endif
-
 	if executable('rust-analyzer')
 		let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer']
 	endif
-
-	"let g:LanguageClient_useVirtualText = 0
+	
 else
 	" vim only
 endif
