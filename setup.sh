@@ -29,4 +29,4 @@ ln -s $HOME/dotfiles/.vimrc $HOME/dotfiles/.config/nvim/init.vim
 git submodule update --init --recursive
 
 vim +:PluginInstall +:q +:q
-nvim +:PluginInstall +":call dein#install()" +:UpdateRemotePlugins +:q +:q
+nvim +:PluginInstall +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
