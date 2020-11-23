@@ -16,5 +16,4 @@ if [ -e $HOME/.bashrc_local ]; then
 	bash $HOME/.bashrc_local;
 fi
 
-fish
-exit
+exec fish
