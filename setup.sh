@@ -1,9 +1,9 @@
-pacman -Syu
-pacman -S --needed git tmux vim neovim fish python3 python-pip clang
+sudo pacman -Syu
+sudo pacman -S --needed git tmux vim neovim fish python3 python-pip clang
 
 pip3 install --user --upgrade pynvim neovim pyls jedi
 
-DOT_FILES=(.bash_history .bash_profile .gitconfig .vim .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc)
+DOT_FILES=(.bash_history .bash_profile .gitconfig .vim .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc .latexmkrc)
 
 if [ ! -d $HOME/.config ]; then
 	mkdir $HOME/.config

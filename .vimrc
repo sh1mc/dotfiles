@@ -8,6 +8,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdtree'
+Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on
@@ -87,6 +88,11 @@ let g:airline_symbols.linenr = ''
 command Tree NERDTreeToggle
 highlight LineNr ctermbg=16 
 highlight LineNr ctermfg=8
+
+" vimtex settings
+
+let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi'  }
+let g:vimtex_compiler_latexmk = { 'continuous' : 0, }
 
 if has('nvim')
 
