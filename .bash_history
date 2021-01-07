@@ -12,3 +12,11 @@ printf $(cat /dev/random) "%d"
 ls /dev
 cat /dev/tty
 exit
+a
+exit
+a
+exit
+time ./sort_collection selection
+time (./sort_collection selection > /dev/null)
+time (./sort_collection selection > /dev/null) make
+exit
