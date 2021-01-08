@@ -52,4 +52,5 @@ on_ft = 'python'
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
 
-
+[[plugins]]
+repo = 'Shougo/deorise.nvim'
