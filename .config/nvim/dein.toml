@@ -49,3 +49,7 @@ hook_source = '''
 '''
 on_ft = 'python'
 
+[[plugins]]
+repo = 'Shougo/vinarise.vim'
+
+
