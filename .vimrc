@@ -9,6 +9,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'preservim/nerdtree'
 Plugin 'lervag/vimtex'
+Plugin 'alvan/vim-closetag'
 
 call vundle#end()
 filetype plugin indent on
