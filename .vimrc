@@ -145,6 +145,9 @@ if has('nvim')
 	if executable('rust-analyzer')
 		let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer']
 	endif
+	if executable('typescript-language-server')
+		let g:LanguageClient_serverCommands['typescript'] = ['typescript-language-server']
+	endif
 	
 else
 	" vim only
