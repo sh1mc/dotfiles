@@ -5,7 +5,7 @@ DOT_FILES := .bash_profile .gitconfig .vim .bash_logout .bashrc .tmux.conf .vimr
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force
 
-install: submodules packages pip_packages dein init.vim $(DOT_FILES)
+install: packages pip_packages submodules dein init.vim $(DOT_FILES)
 	@for file in $(DOT_FILES); do\
 		if [ -e $(HOME)/$$file ]; then\
 			mkdir -p $$( dirname $(BACKUP)/$$file );\
