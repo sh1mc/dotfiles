@@ -34,7 +34,7 @@ dein: force
 		mv $(HOME)/.cache/dein $(BACKUP)/.cache ;\
 	fi
 	mkdir -p $(HOME)/.cahce/dein
-	ln -s $(HOME)/dotfiles/.cache/dein/repos $(HOME)/.cache/dein
+	ln -s $(HOME)/dotfiles/.cache/dein $(HOME)/.cache/dein
 
 init.vim: dein
 	unlink $(HOME)/dotfiles/.config/nvim/init.vim
