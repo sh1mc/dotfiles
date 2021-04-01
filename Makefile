@@ -2,7 +2,7 @@ SHELL = /bin/bash
 PACKAGES := git tmux vim neovim fish python3 python-pip clang
 PIP_PACKAGES := pynvim neovim pyls jedi
 DOT_FILES := .bash_profile .gitconfig .vim .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc .latexmkrc
-BACKUP := $(HOME)/dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
+BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force
 
 install: submodules packages pip_packages dein init.vim $(DOT_FILES)
