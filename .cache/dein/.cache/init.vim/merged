@@ -1,3 +1,0 @@
-{'repo': v:val.repo, 'rev': get(v:val, 'rev', '')}
-0
-[{'rev': '', 'repo': 'Shougo/context_filetype.vim'}, {'rev': '', 'repo': 'Shougo/denite.nvim'}, {'rev': '', 'repo': 'Shougo/deoplete.nvim'}, {'rev': '', 'repo': 'Shougo/neco-syntax'}, {'rev': '', 'repo': 'Shougo/neosnippet'}, {'rev': '', 'repo': 'Shougo/neosnippet-snippets'}, {'rev': '', 'repo': 'Shougo/unite-outline'}, {'rev': 'next', 'repo': 'autozimu/LanguageClient-neovim'}]
