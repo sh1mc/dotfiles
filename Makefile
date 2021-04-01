@@ -21,11 +21,11 @@ install: packages pip_packages submodules dein init.vim $(DOT_FILES)
 submodules: force
 	git submodule update --init --recursive
 
-packeages: force
+packages: force
 	yes | sudo pacman -Syu
 	yes | sudo pacman -S --needed $(PACKAGES)
 
-pip_packages: force
+pip_packages: packages force
 	pip3 install --user --upgrade $(PIP_PACKAGES)
 
 dein: force
