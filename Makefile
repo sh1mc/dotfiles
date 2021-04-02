@@ -1,4 +1,5 @@
 SHELL = /bin/bash
+RM = rm -rf
 PACKAGES := git tmux vim neovim fish python3 python-pip clang
 PIP_PACKAGES := pynvim neovim pyls jedi
 DOT_FILES := .bash_profile .gitconfig .vim .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc .latexmkrc
@@ -37,7 +38,7 @@ dein: force
 	ln -s $(HOME)/dotfiles/.cache/dein $(HOME)/.cache/dein
 
 init.vim: dein
-	unlink $(HOME)/dotfiles/.config/nvim/init.vim
+	$(RM) $(HOME)/dotfiles/.config/nvim/init.vim
 	ln -s $(HOME)/dotfiles/.vimrc $(HOME)/dotfiles/.config/nvim/init.vim
 
 force:
