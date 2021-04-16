@@ -34,7 +34,7 @@ dein: force submodules clean
 		mkdir -p $(BACKUP)/.cache ;\
 		mv $(HOME)/.cache/dein $(BACKUP)/.cache ;\
 	fi
-	$(RM) $(HOME)/.cache/dein
+	rm -f $(HOME)/.cache/dein
 	ln -s $(HOME)/dotfiles/.cache/dein $(HOME)/.cache/dein
 
 init.vim: dein
@@ -42,7 +42,7 @@ init.vim: dein
 	ln -s $(HOME)/dotfiles/.vimrc $(HOME)/dotfiles/.config/nvim/init.vim
 
 .vim:
-	$(RM) $(HOME)/.vim
+	rm -f $(HOME)/.vim
 	mkdir $(HOME)/.vim
 
 tmux_powerline: pip_packages
