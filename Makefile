@@ -4,7 +4,7 @@ PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline
 PIP_PACKAGES := pynvim neovim pyls jedi powerline-status
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
-.PHONY: install clean submodules packages pip_packages dein init.vim force
+.PHONY: install clean submodules packages pip_packages dein init.vim force dein_update
 
 install: packages pip_packages submodules dein init.vim tmux_powerline clean .vim
 	@for file in $(DOT_FILES); do\
@@ -16,8 +16,8 @@ install: packages pip_packages submodules dein init.vim tmux_powerline clean .vi
 		mkdir -p $$( dirname $(HOME)/$$file );\
 		ln -s $(HOME)/dotfiles/$$file $(HOME)/$$file;\
 	done
-	vim +:PluginInstall +:q +:q
-	nvim +:PluginInstall +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
+	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
+	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
 
 submodules: force
 	git submodule update --init --recursive
@@ -50,6 +50,9 @@ tmux_powerline: pip_packages
 	mkdir -p $(HOME)/.config/pip
 	ln -s $$(pip show powerline-status | grep -e "Location" | awk '{print $$2}')/powerline $(HOME)/.config/pip/powerline-status
 
+dein_update:
+	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
+	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
 
 force:
 
