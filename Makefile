@@ -16,8 +16,8 @@ install: packages pip_packages submodules dein init.vim tmux_powerline clean
 		mkdir -p $$( dirname $(HOME)/$$file );\
 		ln -s $(HOME)/dotfiles/$$file $(HOME)/$$file;\
 	done
-	vim +:DeinUpdate
-	nvim +:DeinUpdate
+	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
+	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
 
 submodules: force
 	git submodule update --init --recursive
