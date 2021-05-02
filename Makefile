@@ -6,7 +6,7 @@ DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .co
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force dein_update
 
-install: packages pip_packages submodules dein init.vim tmux_powerline clean .vim
+install: packages pip_packages submodules dein init.vim tmux_powerline clean
 	@for file in $(DOT_FILES); do\
 		if [ -e $(HOME)/$$file ]; then\
 			mkdir -p $$( dirname $(BACKUP)/$$file );\
@@ -40,10 +40,6 @@ dein: force submodules clean
 init.vim: dein
 	$(RM) $(HOME)/dotfiles/.config/nvim/init.vim
 	ln -s $(HOME)/dotfiles/.vimrc $(HOME)/dotfiles/.config/nvim/init.vim
-
-.vim:
-	rm -f $(HOME)/.vim
-	mkdir $(HOME)/.vim
 
 tmux_powerline: pip_packages
 	$(RM) $(HOME)/.config/pip/powerline-status
