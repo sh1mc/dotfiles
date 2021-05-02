@@ -16,8 +16,6 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'simeji/winresizer'
 
-
-
 [[plugins]]
 repo = 'cespare/vim-toml'
 
@@ -38,6 +36,9 @@ let g:vimtex_compiler_latexmk = { 'continuous' : 0, }
 
 [[plugins]]
 repo = 'alvan/vim-closetag'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -100,4 +101,4 @@ function! LightlineFileencoding()
 function! LightlineMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 	endfunction
-	'''
+'''
