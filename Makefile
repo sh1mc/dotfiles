@@ -1,12 +1,14 @@
 SHELL = /bin/bash
 RM = rm -rf
-PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline
+PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs
 PIP_PACKAGES := pynvim neovim pyls jedi powerline-status
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
-.PHONY: install clean submodules packages pip_packages dein init.vim force dein_update
+.PHONY: install clean submodules packages pip_packages dein init.vim force dein_update dein_install coc_install
 
-install: packages pip_packages submodules dein init.vim tmux_powerline clean
+install: app dein_install coc_install
+
+app: packages pip_packages submodules dein init.vim tmux_powerline clean
 	@for file in $(DOT_FILES); do\
 		if [ -e $(HOME)/$$file ]; then\
 			mkdir -p $$( dirname $(BACKUP)/$$file );\
@@ -47,8 +49,15 @@ tmux_powerline: pip_packages
 	ln -s $$(pip show powerline-status | grep -e "Location" | awk '{print $$2}')/powerline $(HOME)/.config/pip/powerline-status
 
 dein_update:
-	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
-	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
+	vim +:DeinUpdate
+	nvim +:DeinUpdate
+
+dein_install:
+	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
+	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
+
+coc_install:
+	nvim +":CocInstall coc-json coc-clangd coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
 
 force:
 

@@ -6,6 +6,4 @@ dein_installer.sh
 *.log
 .vim/bundle
 .config/nvim/init.vim
-.cache/dein/.cache
-.cache/dein/cache_nvim
-.cache/dein/state_nvim.vim
+.config/coc
