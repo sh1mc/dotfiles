@@ -16,7 +16,7 @@ export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:/var/lib/snapd/snap/bin
 
 if [ -e $HOME/.bashrc_local ]; then
-	bash $HOME/.bashrc_local;
+	source $HOME/.bashrc_local;
 fi
 
 exec fish
