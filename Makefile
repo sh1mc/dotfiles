@@ -2,24 +2,28 @@ SHELL = /bin/bash
 RM = rm -rf
 PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs
 PIP_PACKAGES := pynvim neovim pyls jedi powerline-status
-DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/coc .config/powerline .latexmkrc
+DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force dein_update dein_install coc_install
 
-install: app dein_install coc_install
+install: clean app dein_install coc_install
 
-app: packages pip_packages submodules dein init.vim tmux_powerline clean
+clean:
 	@for file in $(DOT_FILES); do\
 		if [ -e $(HOME)/$$file ]; then\
 			mkdir -p $$( dirname $(BACKUP)/$$file );\
 			mv $(HOME)/$$file $(BACKUP)/$$file;\
 			echo Installed $$file;\
 		fi;\
+	done
+
+app: packages pip_packages submodules dein init.vim tmux_powerline clean
+	@for file in $(DOT_FILES); do\
 		mkdir -p $$( dirname $(HOME)/$$file );\
 		ln -s $(HOME)/dotfiles/$$file $(HOME)/$$file;\
 	done
-	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
-	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:q +:q
+	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
+	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
 
 submodules: force
 	git submodule update --init --recursive
