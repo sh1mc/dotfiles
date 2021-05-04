@@ -57,7 +57,7 @@ dein_install:
 	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
 
 coc_install:
-	nvim +":CocInstall coc-json coc-clangd coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
+	nvim +":CocInstall coc-json coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
 
 force:
 
