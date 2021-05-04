@@ -32,12 +32,10 @@ pip_packages: packages force
 	pip3 install --user --upgrade $(PIP_PACKAGES)
 
 dein: force submodules clean
-	@if [ -d $(HOME)/.cache/dein ]; then\
-		mkdir -p $(BACKUP)/.cache ;\
-		mv $(HOME)/.cache/dein $(BACKUP)/.cache ;\
-	fi
-	rm -f $(HOME)/.cache/dein
-	ln -s $(HOME)/dotfiles/.cache/dein $(HOME)/.cache/dein
+	rm -rf ~/.cache/dein
+	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+	sh ./installer.sh ~/.cache/dein
+	rm ./installer.sh
 
 init.vim: dein
 	$(RM) $(HOME)/dotfiles/.config/nvim/init.vim
