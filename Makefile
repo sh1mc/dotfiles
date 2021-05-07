@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 RM = rm -rf
-PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs
+PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs npm
 PIP_PACKAGES := pynvim neovim pyls jedi powerline-status
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
