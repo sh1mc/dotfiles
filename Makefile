@@ -5,6 +5,7 @@ PIP_PACKAGES := pynvim neovim pyls jedi powerline-status
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force dein_update dein_install coc_install
+.IGNORE: packages
 
 install: clean app dein_install coc_install
 
@@ -29,7 +30,6 @@ submodules: force
 	git submodule update --init --recursive
 
 packages: force
-	yes | sudo pacman -Syu
 	yes | sudo pacman -S --needed $(PACKAGES)
 
 pip_packages: packages force
