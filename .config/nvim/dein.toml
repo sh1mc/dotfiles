@@ -48,6 +48,13 @@ colorscheme PaperColor
 '''
 
 [[plugins]]
+repo = 'miyakogi/seiya.vim'
+hook_add = '''
+let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+let g:seiya_auto_enable = 1
+'''
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
 set ambiwidth=double
@@ -58,7 +65,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline_theme = 'papercolor'
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+let g:airline_symbols = {}
 endif
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
