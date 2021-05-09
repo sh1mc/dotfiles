@@ -18,7 +18,6 @@ set noexpandtab
 set ambiwidth=double
 set laststatus=2
 set clipboard=unnamedplus
-set pumblend=25
 set termguicolors
 filetype plugin indent on
 
