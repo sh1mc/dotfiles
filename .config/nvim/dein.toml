@@ -41,6 +41,13 @@ repo = 'alvan/vim-closetag'
 repo = 'tyru/caw.vim'
 
 [[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
+hook_add = '''
+set background=dark
+colorscheme PaperColor
+'''
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
 set ambiwidth=double
