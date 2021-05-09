@@ -21,7 +21,7 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'preservim/nerdtree'
-hook_source = '''
+hook_add = '''
 command Tree NERDTreeToggle
 highlight LineNr ctermbg=16 
 highlight LineNr ctermfg=8
@@ -29,7 +29,7 @@ highlight LineNr ctermfg=8
 
 [[plugins]]
 repo = 'lervag/vimtex'
-hook_source = '''
+hook_add = '''
 let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi'  }
 let g:vimtex_compiler_latexmk = { 'continuous' : 0, }
 '''
@@ -41,64 +41,38 @@ repo = 'alvan/vim-closetag'
 repo = 'tyru/caw.vim'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_source = '''
-let g:lightline = {
-	\ 'colorscheme': 'PaperColor_light',
-	\ 'mode_map': {'c': 'NORMAL'},
-	\ 'active': {
-		\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-			\ },
-	\ 'component_function': {
-		\   'modified': 'LightlineModified',
-		\   'readonly': 'LightlineReadonly',
-		\   'fugitive': 'LightlineFugitive',
-		\   'filename': 'LightlineFilename',
-		\   'fileformat': 'LightlineFileformat',
-		\   'filetype': 'LightlineFiletype',
-		\   'fileencoding': 'LightlineFileencoding',
-		\   'mode': 'LightlineMode'
-			\ }
-	\ }
-
-function! LightlineModified()
-	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-	endfunction
-
-function! LightlineReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-	endfunction
-
-function! LightlineFilename()
-	return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-	\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-			\  &ft == 'unite' ? unite#get_status_string() :
-			\  &ft == 'vimshell' ? vimshell#get_status_string() :
-			\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-	\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-	endfunction
-
-function! LightlineFugitive()
-	if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-return fugitive#head()
-	else
-	return ''
-	endif
-	endfunction
-
-function! LightlineFileformat()
-	return winwidth(0) > 70 ? &fileformat : ''
-	endfunction
-
-function! LightlineFiletype()
-	return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-	endfunction
-
-function! LightlineFileencoding()
-	return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-	endfunction
-
-function! LightlineMode()
-	return winwidth(0) > 60 ? lightline#mode() : ''
-	endfunction
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+set ambiwidth=double
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline_theme = 'papercolor'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <C-n> <Plug>AirlineSelectNextTab
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 '''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
