@@ -1,7 +1,7 @@
 SHELL = /bin/bash
 RM = rm -rf
 PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs npm
-PIP_PACKAGES := pynvim neovim pyls jedi powerline-status
+PIP_PACKAGES := pynvim neovim pyls jedi powerline-status nginx-language-server
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force dein_update dein_install coc_install

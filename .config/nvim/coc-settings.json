@@ -21,9 +21,14 @@
             "initializationOptions": {
                 "languageServerHaskell": {
                     "hlintOn": true
-                }
-            }
-        }
-    },
-    "python.jediEnabled": false
+				}
+			}
+		},
+		"nginx-language-server": {
+			"command": "nginx-language-server",
+			"filetypes": ["nginx"],
+			"rootPatterns": ["nginx.conf", ".git"]
+		}
+	},
+	"python.jediEnabled": false
 }
