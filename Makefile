@@ -23,8 +23,6 @@ app: packages pip_packages submodules dein init.vim tmux_powerline clean
 		mkdir -p $$( dirname $(HOME)/$$file );\
 		ln -s $(HOME)/dotfiles/$$file $(HOME)/$$file;\
 	done
-	vim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
-	nvim +":call dein#install()" +":call dein#update()" +:UpdateRemotePlugins +:qa
 
 submodules: force
 	git submodule update --init --recursive
@@ -55,10 +53,8 @@ dein_update:
 	nvim +:DeinUpdate
 
 dein_install:
-	vim +":call dein#install()" +:qa
-	vim +":call dein#update()" +:qa
-	nvim +":call dein#install()" +:qa
-	nvim +":call dein#update()" +:qa
+	nvim +":call dein#install()" +":call dein#update()" +:qa
+	vim +":call dein#install()" +":call dein#update()" +:qa
 
 coc_install:
 	nvim +":CocInstall coc-json coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
