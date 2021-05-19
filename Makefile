@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 RM = rm -rf
-PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs npm
+PACKAGES := git tmux vim neovim fish python3 python-pip clang powerline nodejs npm inetutils
 PIP_PACKAGES := pynvim neovim pyls jedi powerline-status nginx-language-server
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/nvim .config/fish .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
@@ -55,8 +55,10 @@ dein_update:
 	nvim +:DeinUpdate
 
 dein_install:
-	vim +":call dein#install()" +:UpdateRemotePlugins +":call dein#update()" +:qa
-	nvim +":call dein#install()" +:UpdateRemotePlugins +":call dein#update()" +:qa
+	vim +":call dein#install()" +:qa
+	vim +":call dein#update()" +:qa
+	nvim +":call dein#install()" +:qa
+	nvim +":call dein#update()" +:qa
 
 coc_install:
 	nvim +":CocInstall coc-json coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
