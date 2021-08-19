@@ -55,6 +55,13 @@ let g:seiya_auto_enable = 1
 '''
 
 [[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_add = '''
+filetype plugin indent on
+let g:rustfmt_autosave = 1
+'''
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
 set ambiwidth=double
