@@ -5,7 +5,7 @@ PIP_PACKAGES := pynvim neovim pyls jedi powerline-status nginx-language-server
 DOT_FILES := .bash_profile .gitconfig .bash_logout .bashrc .tmux.conf .vimrc .config/yay .config/nvim .config/fish .config/powerline .latexmkrc
 BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force dein_update dein_install coc_install
-.IGNORE: packages dein_install
+.IGNORE: packages dein_install coc_install
 
 install: clean app dein_install coc_install
 
@@ -49,15 +49,15 @@ tmux_powerline: pip_packages
 	ln -s $$(pip show powerline-status | grep -e "Location" | awk '{print $$2}')/powerline $(HOME)/.config/pip/powerline-status
 
 dein_update: dein_install
-	nvim +:":call dein#update()" +:qa
-	vim +:":call dein#update()" +:qa
+	yes | nvim -c "call dein#update()" -c "qa!"
+	yes | vim -c "call dein#update()" -c "qa!"
 
 dein_install:
-	nvim +":call dein#install()" +:qa
-	vim +":call dein#install()" +:qa
+	yes | nvim -c "call dein#install()" -c "qa!"
+	yes | vim -c "call dein#install()" -c "qa!"
 
 coc_install:
-	nvim +":CocInstall coc-json coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
+	yes | nvim -c "CocInstall coc-json coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
 
 force:
 
