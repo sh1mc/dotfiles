@@ -7,7 +7,7 @@ BACKUP := $(HOME)/.dotfiles_bak/$(shell date +%Y%m%d%H%M%S)
 .PHONY: install clean submodules packages pip_packages dein init.vim force dein_update dein_install coc_install
 .IGNORE: packages dein_install coc_install
 
-install: clean app dein_install coc_install
+install: clean app #dein_install coc_install
 
 clean:
 	@for file in $(DOT_FILES); do\

@@ -72,6 +72,7 @@ nmap <silent> <C-a> <Plug>(coc-range-select)
 xmap <silent> <C-a> <Plug>(coc-range-select)
 
 command! -nargs=0 Format :call CocAction('format')
+autocmd BufWritePre *.js,*.jsx,*ts,*.tsx,*.py,*.c,*.cpp :Format
 
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
