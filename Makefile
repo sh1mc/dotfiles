@@ -56,6 +56,10 @@ dein_install:
 	yes | nvim -c "call dein#install()" -c "qa!"
 	yes | vim -c "call dein#install()" -c "qa!"
 
+coc_build:
+	yarn --cwd $(HOME)/.cache/dein/repos/github.com/neoclide/coc.nvim install
+	yarn --cwd $(HOME)/.cache/dein/repos/github.com/neoclide/coc.nvim build
+
 coc_install:
 	yes | nvim -c "CocInstall coc-json coc-rust-analyzer coc-texlab coc-tsserver coc-html coc-css coc-pyright coc-phpls coc-git coc-go coc-explorer coc-snippets coc-glslx"
 
